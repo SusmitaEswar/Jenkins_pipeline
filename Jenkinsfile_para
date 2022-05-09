@@ -1,0 +1,26 @@
+pipeline {
+  agent any
+	parameters {
+		string defaultValue: 'Archana', description: 'Which should the build need to be deployed', name: 'TEST', trim: true
+	}
+	stages {
+		
+		stage ('Build') {
+			steps {
+		        sh 'echo STAGE 1: "hi this is $TEST"'
+			}
+		}				
+
+		stage ('Test') {
+			steps {
+				sh 'echo STAGE 2: "Test, this is $TEST"'
+			}
+		}
+
+		stage('deploy') {
+			steps {
+					sh 'echo STAGE 3: "Deploy"'
+			}
+		}
+	}
+}
